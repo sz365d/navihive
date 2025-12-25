@@ -7,7 +7,7 @@
     <meta name="description" content="个人导航站，整理和分享您喜爱的网站链接" />
     <link rel="icon" href="/vite.svg" />
     <!-- 初始标题，后续会被JS更新 -->
-    <title>导航站</title>
+    <title>当前时间：</title>
     <style>
       /* 简单样式优化标题展示 */
       .page-title {
@@ -61,7 +61,7 @@
       function updateAllTitles() {
         const currentDateTime = formatCurrentDateTime();
         // 1. 更新浏览器标签页标题（标题右侧加日期时间）
-        document.title = `当前时间： - ${currentDateTime}`;
+        document.title = `导航页 - ${currentDateTime}`;
         // 2. 更新页面内可视标题右侧的日期时间
         const pageDateTimeElement = document.getElementById('pageDateTime');
         if (pageDateTimeElement) {
