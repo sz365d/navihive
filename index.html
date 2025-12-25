@@ -28,7 +28,7 @@
   <body>
     <!-- 页面内可视标题容器（新增） -->
     <div class="page-title">
-      <span>导航站</span>
+      <span>当前时间：</span>
       <span class="date-time" id="pageDateTime"></span>
     </div>
 
@@ -61,7 +61,7 @@
       function updateAllTitles() {
         const currentDateTime = formatCurrentDateTime();
         // 1. 更新浏览器标签页标题（标题右侧加日期时间）
-        document.title = `导航页 - ${currentDateTime}`;
+        document.title = `导航站 - ${currentDateTime}`;
         // 2. 更新页面内可视标题右侧的日期时间
         const pageDateTimeElement = document.getElementById('pageDateTime');
         if (pageDateTimeElement) {
