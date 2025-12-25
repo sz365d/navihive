@@ -7,7 +7,7 @@
     <meta name="description" content="个人导航站，整理和分享您喜爱的网站链接" />
     <link rel="icon" href="/vite.svg" />
     <!-- 初始标题，后续会被JS更新 -->
-    <title>当前时间：</title>
+    <title>导航站</title>
     <style>
       /* 简单样式优化标题展示 */
       .page-title {
@@ -18,8 +18,9 @@
         font-size: 24px;
         font-weight: bold;
       }
+      /* 增大日期时间字号：从16px改为18px（大一号），也可根据需求调整为20px/22px等 */
       .date-time {
-        font-size: 16px;
+        font-size: 18px; /* 原16px，调大一号改为18px，可按需调整 */
         color: #666;
         font-weight: normal;
       }
@@ -38,7 +39,7 @@
     <!-- 新增：获取并更新日期时间的JS代码 -->
     <script>
       /**
-       * 格式化当前日期时间为 YYYY-MM-DD HH:mm:ss 格式
+       * 格式化当前日期时间为 YYYY 年 MM 月 DD 日 HH:mm:ss 格式
        * @returns 格式化后的日期时间字符串
        */
       function formatCurrentDateTime() {
@@ -51,8 +52,8 @@
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const seconds = String(now.getSeconds()).padStart(2, '0');
-        // 拼接格式
-        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        // 拼接为「YYYY 年 MM 月 DD 日 HH:mm:ss」格式
+        return `${year} 年 ${month} 月 ${day} 日 ${hours}:${minutes}:${seconds}`;
       }
 
       /**
@@ -60,9 +61,9 @@
        */
       function updateAllTitles() {
         const currentDateTime = formatCurrentDateTime();
-        // 1. 更新浏览器标签页标题（标题右侧加日期时间）
-        document.title = `导航站 - ${currentDateTime}`;
-        // 2. 更新页面内可视标题右侧的日期时间
+        // 1. 更新浏览器标签页标题（仅保留固定标题，去掉日期时间）
+        document.title = '导航站';
+        // 2. 更新页面内可视标题右侧的日期时间（使用新格式）
         const pageDateTimeElement = document.getElementById('pageDateTime');
         if (pageDateTimeElement) {
           pageDateTimeElement.textContent = currentDateTime;
