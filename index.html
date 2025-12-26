@@ -27,11 +27,17 @@
         font-size: 18px;
         color: #333; /* 颜色加深 */
         font-weight: 700; /* 加粗加黑 */
-        white-space: pre-line;
+        white-space: nowrap; /* 修改为不换行 */
         line-height: 1.1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
       .date-time strong {
         font-weight: 900; /* 更重的字体粗细 */
+      }
+      .week-day {
+        font-weight: 700;
       }
     </style>
   </head>
@@ -63,10 +69,10 @@
         const weekDays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
         const weekDay = weekDays[now.getDay()];
 
-        // 拼接完整格式（移除农历）
+        // 拼接完整格式（星期放在时间右侧）
         return `
-<span style="font-weight: 900">${year} 年 ${month} 月 ${day} 日 ${hours}:${minutes}:${seconds}</span>
-<span style="font-weight: 700">${weekDay}</span>
+<span style="font-weight: 900">${year}年${month}月${day}日 ${hours}:${minutes}:${seconds}</span>
+<span class="week-day">${weekDay}</span>
         `.trim();
       }
 
@@ -78,7 +84,7 @@
         document.title = '导航站';
         const pageDateTimeElement = document.getElementById('pageDateTime');
         if (pageDateTimeElement) {
-          pageDateTimeElement.innerHTML = currentDateTime; // 改为innerHTML以支持span标签
+          pageDateTimeElement.innerHTML = currentDateTime;
         }
       }
 
